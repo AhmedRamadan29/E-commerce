@@ -37,15 +37,18 @@ public class ApplicationParamsService {
         updateAppParamsList(updateApplicationParamDTOS);
         return ResponseEntity.ok().build();
     }
-    public void updateAppParamsList(List<UpdateApplicationParamDTO> updateApplicationParamDTOS)  {
+
+    public void updateAppParamsList(List<UpdateApplicationParamDTO> updateApplicationParamDTOS) {
+        int counter=0;
+
         for (UpdateApplicationParamDTO updateApplicationParamDTO : updateApplicationParamDTOS) {
             if(IntegerUtils.isNull(updateApplicationParamDTO.getParameterId()))
             {
-                throw new RuntimeException("Update Application Param Failed Id Cannot Be Null!");
+                throw new RuntimeException("Update Application Param Failed Id Cannot Be Null! Successfully Updated +"+counter+"Application Params");
             }
             ApplicationParameters applicationParameters=applicationParameterRepository.findById(updateApplicationParamDTO.getParameterId()).orElse(null);
             if (applicationParameters==null) {
-                throw new RuntimeException("Update Application Param Failed Id Not Found!");
+                throw new RuntimeException("Update Application Param Failed Id Not Found! Successfully Updated +"+counter+"Application Params");
             }
             ApplicationParameters.builder().parameterName(updateApplicationParamDTO.getParameterName()).
                     parameterValue(updateApplicationParamDTO.getParameterValue())
@@ -53,7 +56,7 @@ public class ApplicationParamsService {
                     .updatedAt(LocalDate.now()).
                     parameteriId(updateApplicationParamDTO.getParameterId()).build();
             applicationParameterRepository.saveAndFlush(applicationParameters);
-
+            counter++;
         }
     }
     public void deleteAppParamsList(List<DeleteApplicationParamDTO> deleteApplicationParamDTOS) {

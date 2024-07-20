@@ -12,12 +12,9 @@ public class ProductTag {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(nullable = false)
+    @Column(name = "product_id")
     private long productId;
-
-    @Column(nullable = false)
+    @Column(name = "tag")
     private String tag;
 
 

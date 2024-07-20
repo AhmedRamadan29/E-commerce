@@ -14,18 +14,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 public class SocialProfile {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-
+    @Column(name = "userId")
     private Long userId;
-
+    @Column(name = "platform")
     @Enumerated(EnumType.STRING)
     private Platform platform;
-
+    @Column(name = "platformUser")
     private String platformUser;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

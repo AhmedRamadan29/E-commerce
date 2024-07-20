@@ -14,23 +14,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Review {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-
+    @Column(name = "user_id")
     private Long userId;
-
+    @Column(name = "product_id")
     private Long productId;
-
-    @Column(nullable = false)
+    @Column(name = "rating")
     private int rating;
-
-    @Column(columnDefinition = "text")
+    @Column(name = "comment")
     private String comment;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
-    // Getters and setters...
 }

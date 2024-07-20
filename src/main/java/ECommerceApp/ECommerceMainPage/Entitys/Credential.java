@@ -12,14 +12,20 @@ import lombok.NoArgsConstructor;
 public class Credential {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-    @Column(nullable = false)
+    @Column(name = "provider_id")
     private String providerId;
+    @Column(name = "provider_key")
     private String providerKey;
+    @Column(name = "hasher")
     @Enumerated(EnumType.STRING)
     private Hasher hasher;
+    @Column(name = "password_hash")
     private String passwordHash;
+    @Column(name = "password_salt")
     private String passwordSalt;
+    @Column(name = "user_id")
     private Long userId;
 
 }
