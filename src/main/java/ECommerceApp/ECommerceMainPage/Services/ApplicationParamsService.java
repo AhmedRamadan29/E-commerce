@@ -42,14 +42,15 @@ public class ApplicationParamsService {
         return ResponseEntity.ok().build();
     }
     public void updateAppParamsList(List<UpdateApplicationParamDTO> updateApplicationParamDTOS) {
+        int counter=0;
         for (UpdateApplicationParamDTO updateApplicationParamDTO : updateApplicationParamDTOS) {
             if(IntegerUtils.isNull(updateApplicationParamDTO.getParameterId()))
             {
-                throw new RuntimeException("Update Application Param Failed Id Cannot Be Null!");
+                throw new RuntimeException("Update Application Param Failed Id Cannot Be Null! Successfully Updated +"+counter+"Application Params");
             }
             ApplicationParameters applicationParameters=applicationParameterRepository.findById(updateApplicationParamDTO.getParameterId()).orElse(null);
             if (applicationParameters==null) {
-                throw new RuntimeException("Update Application Param Failed Id Not Found!");
+                throw new RuntimeException("Update Application Param Failed Id Not Found! Successfully Updated +"+counter+"Application Params");
             }
             applicationParameters.builder().parameterName(updateApplicationParamDTO.getParameterName()).
                     parameterValue(updateApplicationParamDTO.getParameterValue())
@@ -57,7 +58,7 @@ public class ApplicationParamsService {
                     .updatedAt(LocalDate.now()).
                     parameteriId(updateApplicationParamDTO.getParameterId()).build();
             applicationParameterRepository.saveAndFlush(applicationParameters);
-
+            counter++;
         }
     }
     public void deleteAppParamsList(List<DeleteApplicationParamDTO> deleteApplicationParamDTOS) {
@@ -85,7 +86,7 @@ public class ApplicationParamsService {
                 throw new RuntimeException("Invalid Insert Application Parameter Value!");
             }
             ApplicationParameters applicationParameters=new ApplicationParameters();
-            applicationParameters.builder().parameterName(insertApplicationParamDTO.getParameterName()).
+            ApplicationParameters.builder().parameterName(insertApplicationParamDTO.getParameterName()).
                     parameterValue(insertApplicationParamDTO.getParameterValue()).parameterDescription("")
                     .parameterOrder(insertApplicationParamDTO.getParameterOrder()).createdAt(LocalDate.now()).
                     updatedAt(LocalDate.now()).build();
