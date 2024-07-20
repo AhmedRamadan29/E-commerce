@@ -2,8 +2,6 @@ package ECommerceApp.ECommerceMainPage.DTOs;
 
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.stereotype.Component;
-
 import java.time.LocalDateTime;
 
 @Data
@@ -16,4 +14,6 @@ public class ApplicationParameterDTO {
     private String parameterDescription;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+
 }

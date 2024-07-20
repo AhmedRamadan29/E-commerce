@@ -24,7 +24,7 @@ public class brandsDTO {
     private String slug;
 
 
-    private Boolean visibility = true;
+    private Boolean visibility ;
 
 
     private LocalDateTime createdAt;

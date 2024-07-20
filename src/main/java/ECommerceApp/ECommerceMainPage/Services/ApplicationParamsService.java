@@ -1,5 +1,4 @@
 package ECommerceApp.ECommerceMainPage.Services;
-
 import ECommerceApp.ECommerceMainPage.DTOs.CrudApplicationParamDto;
 import ECommerceApp.ECommerceMainPage.DTOs.DeleteApplicationParamDTO;
 import ECommerceApp.ECommerceMainPage.DTOs.InsertApplicationParamDTO;
@@ -9,10 +8,8 @@ import ECommerceApp.ECommerceMainPage.Repositorys.ApplicationParameterRepository
 import ECommerceApp.Utils.IntegerUtils;
 import ECommerceApp.Utils.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -24,8 +21,7 @@ public class ApplicationParamsService {
 
     public List<String> getDistinctNameParams() {
         return applicationParameterRepository.getDistinctName();
-//        List<String> namesList=applicationParameterRepository.getDistinctName();
-//        return namesList.parallelStream().map(ApplicationParametersMapper::applicationParameterDTO).collect(Collectors.toList());
+
     }
 
     public Optional<ApplicationParameters> getByParamName(String paramName) {
@@ -41,7 +37,7 @@ public class ApplicationParamsService {
         updateAppParamsList(updateApplicationParamDTOS);
         return ResponseEntity.ok().build();
     }
-    public void updateAppParamsList(List<UpdateApplicationParamDTO> updateApplicationParamDTOS) {
+    public void updateAppParamsList(List<UpdateApplicationParamDTO> updateApplicationParamDTOS)  {
         for (UpdateApplicationParamDTO updateApplicationParamDTO : updateApplicationParamDTOS) {
             if(IntegerUtils.isNull(updateApplicationParamDTO.getParameterId()))
             {
@@ -51,7 +47,7 @@ public class ApplicationParamsService {
             if (applicationParameters==null) {
                 throw new RuntimeException("Update Application Param Failed Id Not Found!");
             }
-            applicationParameters.builder().parameterName(updateApplicationParamDTO.getParameterName()).
+            ApplicationParameters.builder().parameterName(updateApplicationParamDTO.getParameterName()).
                     parameterValue(updateApplicationParamDTO.getParameterValue())
                     .parameterOrder(updateApplicationParamDTO.getParameterOrder())
                     .updatedAt(LocalDate.now()).
@@ -85,7 +81,7 @@ public class ApplicationParamsService {
                 throw new RuntimeException("Invalid Insert Application Parameter Value!");
             }
             ApplicationParameters applicationParameters=new ApplicationParameters();
-            applicationParameters.builder().parameterName(insertApplicationParamDTO.getParameterName()).
+            ApplicationParameters.builder().parameterName(insertApplicationParamDTO.getParameterName()).
                     parameterValue(insertApplicationParamDTO.getParameterValue()).parameterDescription("")
                     .parameterOrder(insertApplicationParamDTO.getParameterOrder()).createdAt(LocalDate.now()).
                     updatedAt(LocalDate.now()).build();
