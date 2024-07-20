@@ -4,7 +4,7 @@ import ECommerceApp.ECommerceMainPage.DTOs.brandsDTO;
 import ECommerceApp.ECommerceMainPage.Entitys.brands;
 
 public abstract class brandMapper {
-    brandsDTO toDtoWithBuilder(brands entity) {
+     public static brandsDTO toDtoWithBuilder(brands entity) {
         return brandsDTO.builder()
                 .id(entity.getId())
                 .name(entity.getName())
@@ -14,9 +14,10 @@ public abstract class brandMapper {
                 .createdAt(entity.getCreatedAt())
                 .updatedAt(entity.getUpdatedAt())
                 .build();
+
     }
 
-    brands toEntityWithBuilder(brands dto) {
+ public static brands toEntityWithBuilder(brandsDTO dto) {
         return brands.builder()
                 .id(dto.getId())
                 .name(dto.getName())

@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-
 @Entity
 @Table (name = "brands")
 @AllArgsConstructor
@@ -31,7 +30,6 @@ public class brands {
     private Boolean visibility = true;
 
     @Column(name = "created_at", nullable = false, updatable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private LocalDateTime createdAt;
 
     @Column(name = "updated_at")

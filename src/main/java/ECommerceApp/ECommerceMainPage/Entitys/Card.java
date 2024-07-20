@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class Card {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
