@@ -14,10 +14,9 @@ public abstract class brandMapper {
                 .createdAt(entity.getCreatedAt())
                 .updatedAt(entity.getUpdatedAt())
                 .build();
-
     }
 
- public static brands toEntityWithBuilder(brandsDTO dto) {
+    brands toEntityWithBuilder(brands dto) {
         return brands.builder()
                 .id(dto.getId())
                 .name(dto.getName())

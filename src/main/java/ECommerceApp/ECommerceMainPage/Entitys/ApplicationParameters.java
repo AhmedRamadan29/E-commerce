@@ -10,22 +10,23 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 public class ApplicationParameters {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "parameter_id")
-    private Integer parameter_id;
+    private Integer parameteriId;
     @Column(name = "parameter_name")
-    private String parameter_name;
+    private String parameterName;
     @Column(name = "parameter_value")
-    private String parameter_value;
+    private String parameterValue;
     @Column(name = "parameter_description")
-    private String parameter_description;
+    private String parameterDescription;
     @Column(name = "created_at")
-    private LocalDate created_at;
+    private LocalDate createdAt;
     @Column(name="updated_at")
-    private LocalDate updated_at;
+    private LocalDate updatedAt;
     @Column(name = "parameter_order")
-    private Integer parameter_order;
+    private Integer parameterOrder;
 }
