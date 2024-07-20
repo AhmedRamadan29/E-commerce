@@ -16,22 +16,18 @@ import java.time.LocalDateTime;
 public class brands {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-
-    @Column(nullable = false)
+    @Column(nullable = false,name = "name")
     private String name;
-
+    @Column(name = "image")
     private String image;
-
-    @Column(unique = true)
+    @Column(unique = true,name = "slug")
     private String slug;
-
-    @Column(nullable = false)
+    @Column(nullable = false,name = "visibility")
     private Boolean visibility = true;
-
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
-
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 }

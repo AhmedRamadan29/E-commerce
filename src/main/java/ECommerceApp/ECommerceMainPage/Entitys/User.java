@@ -14,52 +14,42 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-
+    @Column(name = "slug")
     private String slug;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(name = "role")
     private Role role;
-
-    @Column(nullable = false, length = 50)
+    @Column(name = "username")
     private String username;
-
-    @Column(nullable = false, length = 100)
+    @Column(name = "password")
     private String password;
-
+    @Column(name = "avatar")
     private String avatar;
-
+    @Column(name = "email")
     private String email;
-
+    @Column(name = "email_validated")
     private LocalDateTime emailValidated;
-
+    @Column(name = "phone")
     private String phone;
-
+    @Column(name = "phone_validated")
     private LocalDateTime phoneValidated;
-
-    @Column(columnDefinition = "text")
+    @Column(name = "bio")
     private String bio;
-
+    @Column(name = "company")
     private String company;
-
+    @Column(name = "locale")
     @Enumerated(EnumType.STRING)
     private Locale locale;
-
     @Column(name = "created_at")
     private LocalDateTime createdAt;
-
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-
+    @Column(name = "last_login")
     private LocalDateTime lastLogin;
-
-
-
-    // Getters and setters...
 }

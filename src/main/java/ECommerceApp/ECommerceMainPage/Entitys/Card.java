@@ -17,14 +17,12 @@ import java.time.LocalDateTime;
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name = "card_id")
     private Integer cardId;
-
+    @Column(name = "card_key")
     private String cardKey;
-
+    @Column(name = "price")
     private Integer price;
-
     @Column(name = "creation_time_date")
     private LocalDateTime creationTimeDate;
-
 }

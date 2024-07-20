@@ -13,12 +13,9 @@ import lombok.NoArgsConstructor;
 public class CategoryTag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(nullable = false)
+    @Column(name = "category_id")
     private long categoryId;
-
-    @Column(nullable = false)
+    @Column(name = "tag")
     private String tag;
 
 }

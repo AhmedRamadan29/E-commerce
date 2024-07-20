@@ -14,12 +14,11 @@ public class Authority {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
-
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50,name = "username")
     private String username;
-
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50,name = "authority")
     private String authority;
 
 
